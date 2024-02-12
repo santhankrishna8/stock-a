@@ -1,0 +1,75 @@
+button{
+    background-color: black;
+    color:white;
+    font-family: monospace;
+}
+.subnav-c{
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color:black;
+    width: 100%;
+    z-index: 1;
+}
+.subnav-c a {
+   display: flex;
+   flex-direction: column;
+   color:rgb(126, 6, 5) ;
+   text-decoration: none;
+}
+
+.subnav-c a:hover {
+    background-color: #eee;
+    color: black;
+ }
+
+.subnav:hover .subnav-c {
+  display: flex;
+     flex-direction: column;
+    width:20%;
+      margin-left: 15rem;
+
+       }
+
+
+
+.n{
+    display: flex;
+    
+    background-color: black;
+    font-family: monospace;
+    align-items: center;
+    margin:1rem;
+}
+.n a{
+    text-decoration: none;
+    color:white;
+    margin:1rem;
+    font-size: 1.2rem;
+}
+.t{
+    display:flex;
+
+}
+.d{
+    flex:1.5;
+}
+.news{
+    flex:1;
+    height:50vh;
+
+}
+h1{
+    text-align: center;
+}
+@media screen and (max-width:36rem){
+    .n a{
+        font-size: 1rem;
+        margin:1rem;
+
+    }
+    .tradingview-widget-container{
+        height: 100px;
+        width:30%;
+    }
+}
