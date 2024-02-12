@@ -30,7 +30,10 @@ button{
       margin-left: 15rem;
 
        }
+.logomobile{
+    display: none;
 
+}
 .mobile{
     display: none;
     flex-direction: column;
@@ -81,6 +84,10 @@ h1{
     .n {
         display: none;
 
+    }
+    .logomobile{
+        display: flex;
+        flex-direction: row;
     }
     .subnabbtn{
         display: none;
