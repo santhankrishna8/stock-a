@@ -89,15 +89,13 @@ h1{
         display: flex;
         flex-direction: row;
     }
-    .subnabbtn{
+    .subnavbtn{
         display: none;
     }
-    .tradingview-widget-container{
-        height: 100px;
-        width:30%;
-    }
-    .menubtn:active,.menubtn:hover .mobile{
+    
+    .logomobile .menubtn:active,.logomobile .menubtn:hover .mobile{
         display: flex;
+
         
     }
     .menubtn{
