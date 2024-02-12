@@ -31,7 +31,19 @@ button{
 
        }
 
-
+.mobile{
+    display: none;
+    flex-direction: column;
+    height:200px;
+    width:200px;
+    align-items: center;
+    font-family: monospace;
+    background-color: rgb(9, 16, 22);
+}
+.mobile a{
+    text-decoration: none;
+    color:white;
+}
 
 .n{
     display: flex;
@@ -62,6 +74,9 @@ button{
 h1{
     text-align: center;
 }
+.menubtn{
+    display: none;
+}
 @media screen and (max-width:36rem){
     .n a{
         font-size: 1rem;
@@ -72,4 +87,12 @@ h1{
         height: 100px;
         width:30%;
     }
+    .menubtn:active,.menubtn:hover .mobile{
+        display: flex;
+        
+    }
+    .menubtn{
+        display: block;
+    }
+    
 }
