@@ -78,10 +78,12 @@ h1{
     display: none;
 }
 @media screen and (max-width:36rem){
-    .n a{
-        font-size: 1rem;
-        margin:1rem;
+    .n {
+        display: none;
 
+    }
+    .subnabbtn{
+        display: none;
     }
     .tradingview-widget-container{
         height: 100px;
