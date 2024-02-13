@@ -126,7 +126,7 @@ h1{
             }
           }
           &:hover span, &:hover span:before, &:hover span:after {
-            background: #333332;
+            background: white;
           }
       }
       
