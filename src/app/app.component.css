@@ -96,6 +96,7 @@ h1{
         position: absolute;
         right: 23em;
         top: 2em;
+        left:1em;
         padding: 26px 11px;
         z-index: 5;
         cursor: pointer;
