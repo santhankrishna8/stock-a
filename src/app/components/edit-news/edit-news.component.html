@@ -1,0 +1,17 @@
+<div class="edit-container" *ngIf="news">
+  <h3>Edit News</h3>
+
+  <label>Title</label>
+  <input type="text" [(ngModel)]="news.title" />
+
+  <label>Description</label>
+  <textarea rows="4" [(ngModel)]="news.description"></textarea>
+
+  <label>Image URL</label>
+  <input type="text" [(ngModel)]="news.imageUrl" />
+
+  <div class="btn-row">
+    <button class="save" (click)="updateNews()">Save</button>
+    <button class="cancel" (click)="close()">Cancel</button>
+  </div>
+</div>

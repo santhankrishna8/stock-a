@@ -1,0 +1,20 @@
+
+<h2 style="text-align: center;color: black;margin-top: -40px;">Top News</h2>
+  <div class="news-list">
+    <div class="news-card" *ngFor="let item of newsList">
+      <a [href]="item.link" target="_blank" class="news-image" *ngIf="item.imageUrl">
+        <img [src]="item.imageUrl" [alt]="item.title" />
+      </a>
+      <div class="news-content">
+        <h3 class="news-title">{{ item.title }}</h3>
+        <!-- <a class="news-link" [href]="item.link" target="_blank">
+          {{ item.link }}
+        </a> -->
+      </div>
+      <button *ngIf="adminState.isAdmin" class="news-delete-btn" (click)="deleteNews(item.id)">
+  Delete
+</button>
+
+
+    </div>
+  </div>

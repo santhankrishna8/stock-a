@@ -1,0 +1,40 @@
+.edit-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  margin: 15px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.btn-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.save {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+.cancel {
+  background: #d9534f;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+}

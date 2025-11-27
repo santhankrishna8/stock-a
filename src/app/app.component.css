@@ -1,12 +1,20 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  background-color: blanchedalmond;
+  height: 100lvh;
+}
 button{
     background-color: black;
     color:white;
+    /* margin-left:-10px ; */
     font-family: monospace;
 }
 .subnav-c{
     display: none;
     position: absolute;
     left: 0;
+    /* top: -20; */
     background-color:black;
     width: 100%;
     z-index: 1;
@@ -45,7 +53,7 @@ button{
 
 .n{
     display: flex;
-    
+    /* flex-direction: column; */
     background-color: black;
     font-family: monospace;
     align-items: center;
@@ -78,6 +86,20 @@ h1{
 @media screen and (max-width:36rem){
     .n{
         display: none;
+    }
+    .logo{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+    }
+    .logo img{
+      object-fit: contain;
+      /* height: 150px; */
+      margin-left: 35px;
+    }
+    button{
+      margin-left: -10px;
     }
     body {
         background: white;
@@ -140,7 +162,7 @@ h1{
         
         &:checked ~ #overlay-button {
           &:hover span, span{
-            background: transparent;
+            /* background: transparent; */
           }
           span {
             &:before {
@@ -157,7 +179,8 @@ h1{
       #overlay {
         height: 100vh;
         width: 60vw;
-        background: red;
+        border-top : 1px solid white;
+        background: black;
         z-index: 2;
         visibility: hidden;
         position: fixed;
@@ -170,11 +193,12 @@ h1{
           align-items: center;
           flex-direction: column;
           text-align: center;
-          height: 100vh;
+          margin-top: -100px;
+          height: 80vh;
           padding-left: 0;
           list-style-type: none;
           li {
-            padding: 1em;
+            padding: .5em;
             a {
               color: white;
               text-decoration: none;
@@ -188,7 +212,7 @@ h1{
       }
       .mobile{
         display: flex;
-        background-color: black;
+        /* background-color: black; */
       }
       
     
