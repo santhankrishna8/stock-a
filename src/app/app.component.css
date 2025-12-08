@@ -1,8 +1,12 @@
 .container{
   display: flex;
   flex-direction: column;
-  background-color: blanchedalmond;
+  /* background-color: ; */
+  overflow-x: hidden;
   height: 100lvh;
+
+  background-color: black;
+  /* border-bottom: 1px solid white;  */
 }
 button{
     background-color: black;
@@ -13,7 +17,7 @@ button{
 .subnav-c{
     display: none;
     position: absolute;
-    left: 0;
+    left: -170px;
     /* top: -20; */
     background-color:black;
     width: 100%;
@@ -26,10 +30,6 @@ button{
    text-decoration: none;
 }
 
-.subnav-c a:hover {
-    background-color: #eee;
-    color: black;
- }
 
 .subnav:hover .subnav-c {
   display: flex;
@@ -38,6 +38,13 @@ button{
       margin-left: 15rem;
 
        }
+
+       .subnav-c a:hover {
+  background: rgba(56, 189, 248, 0.2) !important;
+  color: #38bdf8 !important;
+  padding-left: 1.5rem;
+  transform: translateX(5px);
+}
 .logomobile{
     display: none;
 
@@ -83,6 +90,15 @@ h1{
 .menubtn{
     display: none;
 }
+.logo img{
+  height:100px;
+  width:290px;
+  object-fit: contain; 
+  display: block;
+  margin: auto;
+  background-color: black;
+
+}
 @media screen and (max-width:36rem){
     .n{
         display: none;
@@ -92,11 +108,14 @@ h1{
       justify-content: center;
       align-items: center;
       background-color: black;
+      
     }
     .logo img{
       object-fit: contain;
       /* height: 150px; */
-      margin-left: 35px;
+      width: 110px;
+      margin-left: 65px;
+      width: 310px;
     }
     button{
       margin-left: -10px;
@@ -115,10 +134,10 @@ h1{
       @-webkit-keyframes bugfix { from {padding:0;} to {padding:0;}}
       
       #overlay-button {
-        position: absolute;
+        position: relative;
         right: 23em;
-        top: 2em;
-        left:1em;
+        top:-6em;
+        left:0.4em;
         padding: 26px 11px;
         z-index: 5;
         cursor: pointer;
@@ -178,6 +197,7 @@ h1{
       
       #overlay {
         height: 100vh;
+        /* margin-top: 100px; */
         width: 60vw;
         border-top : 1px solid white;
         background: black;
@@ -189,11 +209,11 @@ h1{
         }
         ul {
           display: flex;
-          justify-content: center;
+          /* justify-content: center; */
           align-items: center;
           flex-direction: column;
           text-align: center;
-          margin-top: -100px;
+          /* margin-top: -100px; */
           height: 80vh;
           padding-left: 0;
           list-style-type: none;

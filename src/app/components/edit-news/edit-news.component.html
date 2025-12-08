@@ -1,17 +1,73 @@
-<div class="edit-container" *ngIf="news">
-  <h3>Edit News</h3>
-
-  <label>Title</label>
-  <input type="text" [(ngModel)]="news.title" />
-
-  <label>Description</label>
-  <textarea rows="4" [(ngModel)]="news.description"></textarea>
-
-  <label>Image URL</label>
-  <input type="text" [(ngModel)]="news.imageUrl" />
-
-  <div class="btn-row">
-    <button class="save" (click)="updateNews()">Save</button>
-    <button class="cancel" (click)="close()">Cancel</button>
+<div class="edit-news-container">
+  <div class="manage-header">
+    <h1>Manage News</h1>
+    <a routerLink="/add-news" routerLinkActive="active" class="add-new-btn">
+      <i class="fa fa-plus"></i> Add New News
+    </a>
   </div>
+
+  <!-- Loading -->
+  <div class="loading" *ngIf="loading">Loading news...</div>
+
+  <!-- News Cards -->
+  <div class="news-grid" *ngIf="!loading">
+    <div class="news-card" *ngFor="let news of newsList">
+      <div class="news-image">
+        <img [src]="news.imageUrl" [alt]="news.title" />
+      </div>
+      <div class="news-content">
+        <h3 class="news-title">{{ news.title }}</h3>
+      </div>
+        <!-- <a class="news-link" [href]="news.link" target="_blank">
+          {{ news.link }}
+        </a> -->
+        <!-- <div class="news-meta">
+          ID: {{ news.id }}
+        </div> -->
+      <div class="card-actions">
+        <div class="card-actions">
+          <button class="btn-edit" (click)="editNews(news)">
+            <i class="fa fa-pencil"></i> Edit
+          </button>
+          <button class="btn-delete" (click)="deleteNews(news.id)">
+            <i class="fa fa-trash"></i> Delete
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Form Modal -->
+  <div class="edit-modal" *ngIf="editingNewsId">
+    <div class="modal-overlay" (click)="cancelEdit()"></div>
+    <div class="modal-content">
+      <h2>Edit News Item</h2>
+      <form (ngSubmit)="updateNews()">
+        <div class="form-group">
+          <label>Title</label>
+          <input [(ngModel)]="editingTitle" name="title" required />
+        </div>
+        <div class="form-group">
+          <label>Link</label>
+          <input [(ngModel)]="editingLink" name="link" type="url" required />
+        </div>
+        <div class="form-group">
+          <label>Image URL</label>
+          <input [(ngModel)]="editingImageUrl" name="imageUrl" type="url" />
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary" [disabled]="loading">
+            {{ loading ? 'Updating...' : 'Update' }}
+          </button>
+          <button type="button" class="btn-secondary" (click)="cancelEdit()">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" *ngIf="showToast">News updated successfully!</div>
 </div>

@@ -1,40 +1,384 @@
-.edit-container {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 350px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  margin: 15px auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.edit-news-container {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #020617 0%, #111827 100%);
+  padding: 2rem 1rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #e5e7eb;
 }
-
-input, textarea {
-  width: 100%;
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-.btn-row {
+.manage-header {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 0;
 }
 
-.save {
-  background: #4caf50;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
+.manage-header h1 {
+  color: #f9fafb;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.cancel {
-  background: #d9534f;
-  color: white;
+.add-new-btn {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white !important;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
   border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
+}
+
+.add-new-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.6);
+  text-decoration: none;
+  color: white !important;
+}
+
+.add-new-btn i {
+  font-size: 1.1rem;
+}
+
+.fa-plus {
+  transition: transform 0.2s ease;
+}
+
+.add-new-btn:hover .fa-plus {
+  transform: scale(1.2);
+}
+
+
+.loading {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 1.2rem;
+  padding: 4rem 2rem;
+}
+
+.news-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.news-card {
+  background: radial-gradient(circle at top left, #1f2937 0%, #020617 55%);
+  border-radius: 16px;
+  padding: 1.25rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.9);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(8, 47, 73, 0.95);
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.news-image {
+  width: 100%;
+  height: 140px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.news-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.news-card:hover .news-image img {
+  transform: scale(1.05);
+}
+
+.news-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-title {
+  color: #f9fafb;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-link {
+  color: #38bdf8;
+  font-size: 0.85rem;
+  text-decoration: none;
+  word-break: break-all;
+  margin-bottom: 0.75rem;
+  opacity: 0.9;
+}
+
+.news-link:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+.news-meta {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+/* CARD ACTION BUTTONS */
+.card-actions {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-edit, .btn-delete {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.btn-edit {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+}
+
+.btn-edit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+.btn-delete {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+
+.btn-delete:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+/* Modal */
+.edit-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: modalSlideIn 0.2s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 10000;
+}
+
+.modal-content {
+  background: #1f2937;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  z-index: 10001;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+}
+
+.modal-content h2 {
+  color: #f9fafb;
+  margin: 0 0 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.modal-content .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.modal-content .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #e5e7eb;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.modal-content .form-group input {
+  width: 100% !important;
+  padding: 0.875rem 1rem !important;
+  background: rgba(15, 23, 42, 0.95) !important;
+  border: 2px solid rgba(148, 163, 184, 0.4) !important;
+  border-radius: 8px !important;
+  color: #f9fafb !important;
+  font-size: 1rem !important;
+  transition: all 0.2s ease;
+}
+
+.modal-content .form-group input:focus {
+  border-color: #38bdf8 !important;
+  background: rgba(15, 23, 42, 1) !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2) !important;
+  outline: none;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.modal-actions .btn-primary,
+.modal-actions .btn-secondary {
+  padding: 0.875rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.modal-actions .btn-primary {
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: white;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
+}
+
+.modal-actions .btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5);
+}
+
+.modal-actions .btn-secondary {
+  background: rgba(75, 85, 99, 0.3);
+  color: #e5e7eb;
+  border: 2px solid rgba(148, 163, 184, 0.4);
+}
+
+.modal-actions .btn-secondary:hover {
+  background: rgba(75, 85, 99, 0.5);
+  border-color: rgba(148, 163, 184, 0.6);
+}
+
+.modal-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.toast {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  z-index: 2000;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+  animation: toastSlideIn 0.3s ease-out;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes toastSlideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .manage-header {
+    flex-direction: column;
+    text-align: center;
+    margin-top: -90px;
+  }
+  
+  .header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .news-card {
+    padding: 1rem;
+  }
+  
+  .card-actions {
+    flex-direction: row;
+
+  }
 }

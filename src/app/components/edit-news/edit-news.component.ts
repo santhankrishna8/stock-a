@@ -1,38 +1,80 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { doc, updateDoc } from 'firebase/firestore';
-import { Firestore } from '@angular/fire/firestore';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from "@angular/common";
+import { Component, OnInit } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from "@angular/router";
+import { NewsService } from "../../services/news.service";
+import { AdminStateService } from "../../services/admin-state.service";
 
 @Component({
   selector: 'app-edit-news',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [FormsModule, CommonModule,RouterLink, RouterLinkActive],
   templateUrl: './edit-news.component.html',
-  styleUrl: './edit-news.component.css'
+  styleUrls: ['./edit-news.component.css']
 })
-export class EditNewsComponent {
-    @Input() news: any;
-  @Output() closeEdit = new EventEmitter();
+export class EditNewsComponent implements OnInit {
+  newsList: any[] = [];
+  loading = false;
+  showToast = false;
 
-  constructor(private firestore: Firestore) {}
+  // For editing single item
+  editingNewsId: string | null = null;
+  editingTitle = '';
+  editingLink = '';
+  editingImageUrl = '';
+
+  constructor(
+    private newsService: NewsService,
+    private router: Router,
+    private route: ActivatedRoute,
+    public adminState: AdminStateService
+  ) {}
+
+  async ngOnInit() {
+    this.loading = true;
+    this.newsService.getNews().subscribe(data => {
+      this.newsList = data;
+      this.loading = false;
+    });
+  }
+
+  editNews(news: any) {
+    this.editingNewsId = news.id;
+    this.editingTitle = news.title;
+    this.editingLink = news.link;
+    this.editingImageUrl = news.imageUrl;
+  }
+
+  cancelEdit() {
+    this.editingNewsId = null;
+    this.editingTitle = '';
+    this.editingLink = '';
+    this.editingImageUrl = '';
+  }
 
   async updateNews() {
-    if (!this.news?.id) return;
+    if (!this.editingNewsId) return;
 
-    const ref = doc(this.firestore, 'news', this.news.id);
-    await updateDoc(ref, {
-      title: this.news.title,
-      description: this.news.description,
-      imageUrl: this.news.imageUrl
+    this.loading = true;
+    await this.newsService.updateNews(this.editingNewsId, {
+      title: this.editingTitle,
+      link: this.editingLink,
+      imageUrl: this.editingImageUrl
     });
-
-    alert('News Updated');
-    this.closeEdit.emit();
+    
+    this.loading = false;
+    this.showToast = true;
+    setTimeout(() => {
+      this.showToast = false;
+    }, 2000);
+    this.cancelEdit();
   }
 
-  close() {
-    this.closeEdit.emit();
-  }
+  async deleteNews(id: string) {
+    if (!confirm('Delete this news item?')) return;
 
+    this.loading = true;
+    await this.newsService.deleteNews(id);
+    this.loading = false;
+  }
 }

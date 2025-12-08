@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Firestore, collection, addDoc, collectionData } from '@angular/fire/firestore';
 import { deleteDoc, doc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
+import { getDoc, updateDoc } from 'firebase/firestore';
 
 @Injectable({ providedIn: 'root' })
 export class NewsService {
@@ -21,5 +22,17 @@ export class NewsService {
   const newsRef = doc(this.firestore, 'news', id);
   return deleteDoc(newsRef);
 }
+
+async getNewsById(id: string) {
+  const newsRef = doc(this.firestore, 'news', id);
+  const newsSnap = await getDoc(newsRef);
+  return newsSnap.exists() ? { id: newsSnap.id, ...newsSnap.data() } : null;
+}
+
+async updateNews(id: string, news: any) {
+  const newsRef = doc(this.firestore, 'news', id);
+  return updateDoc(newsRef, news);
+}
+
 
 }

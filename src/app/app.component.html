@@ -5,8 +5,9 @@
       <i class="fa fa-bars"></i>
     </a>
     <img src="assets/iibsedu-logo-1.png"
-    alt="SAMS Logo" style="height:100px;width:310px;margin-left: 65px;">
+    alt="SAMS Logo"  />
   </div>
+  <hr style="border-bottom: 1px solid white;width: 100lvw;">
   
   <div class="n">
     <a href="#home">Home</a>
@@ -30,17 +31,19 @@
     <a href="https://ibjarates.com/" target="_blank">Bullion Market</a>
     <a href="https://www.indiabudget.gov.in/doc/bh1.pdf" target="_blank">Budget 2025</a>
     <a href="https://www.businesstoday.in/magazine/the-buzz" target="_blank">Market Watch</a>
-     <button><li *ngIf="adminState.isAdmin" (click)="logoutAdmin()">logout</li></button>
-
+    <a href="https://www.bbc.co.uk/programmes/p02tb8vq/episodes/downloads" target="_blank">World Business Report</a>
+    
+    <!-- <button><li *ngIf="adminState.isAdmin" (click)="logoutAdmin()">logout</li></button> -->
+    
   </div>
-
+  
   <div class="mobile">
-
+    
     <input type="checkbox" id="overlay-input" />
     <label for="overlay-input" id="overlay-button"><span></span></label>
     <div id="overlay">
       <ul>
-
+        
         <li><a href="https://www.moneycontrol.com/stocksmarketsindia/" target="_blank">Indian Indices</a></li>
         <li><a href="https://www.moneycontrol.com/stocksmarketsindia/" target="_blank">Global Indices</a></li>
         <li><a href="https://www.moneycontrol.com/stocksmarketsindia/" target="_blank">Top Gainers</a></li>
@@ -48,10 +51,11 @@
           <a href="https://www.moneycontrol.com/stocksmarketsindia/" target="_blank">Top Loosers</a>
         </li>
         <li><a href="https://instantforex.icicibank.com/instantforex/forms/MicroCardRateView.aspx"
-            target="_blank">Forex</a></li>
-        <li><a href="https://ibjarates.com/" target="_blank">Bullion Market</a></li>
-        <li> <a href="https://www.indiabudget.gov.in/doc/bh1.pdf" target="_blank">Budget 2025</a></li>
-        <li><a href="https://www.businesstoday.in/magazine/the-buzz" target="_blank">Market Watch</a></li>
+          target="_blank">Forex</a></li>
+          <li><a href="https://ibjarates.com/" target="_blank">Bullion Market</a></li>
+          <li> <a href="https://www.indiabudget.gov.in/doc/bh1.pdf" target="_blank">Budget 2025</a></li>
+          <li><a href="https://www.businesstoday.in/magazine/the-buzz" target="_blank">Market Watch</a></li>
+          <li><a href="https://www.bbc.co.uk/programmes/p02tb8vq/episodes/downloads" target="_blank">World Business Report</a></li>
         <li></li>
         <li *ngIf="adminState.isAdmin" (click)="logoutAdmin()">logout</li>
       </ul>
