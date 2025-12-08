@@ -32,8 +32,12 @@ export class EditNewsComponent implements OnInit {
 
   async ngOnInit() {
     this.loading = true;
-    this.newsService.getNews().subscribe(data => {
-      this.newsList = data;
+   this.newsService.getNews().subscribe(data => {
+    this.newsList = data.sort((a, b) => {
+      const timeA = (a.postedAt?.toDate?.() || a.postedAt || new Date(0)).getTime();
+      const timeB = (b.postedAt?.toDate?.() || b.postedAt || new Date(0)).getTime();
+      return timeB - timeA; // Newest first
+    });
       this.loading = false;
     });
   }
